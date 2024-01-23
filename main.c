@@ -3,31 +3,50 @@
 
 int main()
 {
-    //sayi tahmin oyunu
-    int sayi,tahmin,i;
-    sayi=(rand() % 100);
-    printf("0-100 arasindaki sayiyi tahmin edin\n5 hakkiniz var:)\niyi eglenceler:))\n");
-    for(i=4;i>=0;i--){
-        printf("tahmin girin: ");
-        scanf("%d",&tahmin);
-        if(tahmin==sayi){
-            printf("tebrikler dogru tahmin :D\n");
+    //hesap makinesi
+    int a,b;
+    char islem,cikis = 1;
+
+
+    while(cikis)
+    {
+        printf("2 Tane Sayi Giriniz: ");
+        scanf("%d %d",&a,&b);
+        printf("(Cikis Yapmak Icin 0 tuslayin)\n");
+        printf("Yapmak Istediginiz Islem: ");
+        scanf(" %c",&islem);
+
+        switch(islem){
+        case '+' :
+            printf("Cevap: %d\n",a+b);
+            break;
+
+        case '-':
+            printf("Cevap: %d\n",a-b);
+            break;
+
+        case '*':
+            printf("Cevap: %d\n",a*b);
+            break;
+
+        case '/':
+            if(b==0){
+                printf("Sayi 0'a Bolunemez\n");
+                continue;
+
+            }
+            printf("Cevap: %d\n",a/b);
+            break;
+        case '0':
+            printf("Cikis Yapildi\n");
+            cikis = 0;
+            break;
+
+        default:
+            printf("Hatali Giris\nLutfen '+','-','*','/' islemlerinden birini giriniz..\n");
             break;
         }
-        else if(tahmin>sayi){
-            printf("daha kucuk sayi girin, kalan hak: %d\n",i);
-        }
-        else if(tahmin<sayi){
-            printf("daha buyuk sayi girin,kalan hak: %d\n",i);
-        }
-        else{
-            printf("yanlis girdiniz");
-            i++;
-            continue;
-        }
-        if (i == 0) {
-        printf("Hakkiniz bitti. Sayi: %d\n", sayi);
 
-        }
+
     }
 }
